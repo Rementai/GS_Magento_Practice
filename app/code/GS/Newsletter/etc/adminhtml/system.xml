@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * GS Newsletter
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_Newsletter
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/system_file.xsd">
+    <system>
+        <section id="popup" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Newsletter popup settings</label>
+            <tab>general</tab>
+            <resource>Magento_Backend::admin</resource>
+            <group id="popup_configuration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Popup configuration</label>
+                <field id="enable_popup" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Popup</label>
+                    <comment>Enable/disable popup</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="popup_location" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Popup location</label>
+                    <comment>Pick a location for the popup</comment>
+                    <source_model>GS\Newsletter\Model\Config\Source\PopupLocation</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
