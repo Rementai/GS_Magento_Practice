@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * GS PhoneLogin
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_PhoneLogin
+ */
+
+use Magento\Config\Block\Form\Login;
+use Magento\Customer\ViewModel\LoginButton;
+use Magento\Framework\Escaper;
+
+/** @var Login $block */
+/** @var LoginButton $loginButtonViewModel */
+/** @var Escaper $escaper */
+$loginButtonViewModel = $block->getData('login_button_view_model');
+?>
+<div class="block block-customer-login">
+    <div class="block-title">
+        <strong id="blockCustomerLoginHeading" role="heading" aria-level="2">
+            <?= $escaper->escapeHtml(__('Registered Customers')) ?>
+        </strong>
+    </div>
+    <div class="block-content" aria-labelledby="blockCustomerLoginHeading">
+        <form class="form form-login"
+              action="<?= $escaper->escapeUrl($block->getPostActionUrl()) ?>"
+              method="post"
+              id="loginForm"
+              data-mage-init='{"validation":{}}'>
+            <?= $block->getBlockHtml('formkey') ?>
+            <fieldset class="fieldset login" data-hasrequired="<?= $escaper->escapeHtml(__('* Required Fields')) ?>">
+                <div class="field note"><?= $escaper->escapeHtml(__('If you have an account, sign in with your email address or phone number.')) ?></div>
+                <div class="field email required">
+                    <label class="label" for="email"><span><?= $escaper->escapeHtml(__('Email or phone number')) ?></span></label>
+                    <div class="control">
+                        <input type="text"
+                               name="login[username]"
+                               id="email"
+                               class="input-text required-entry"
+                               title="<?= $escaper->escapeHtmlAttr(__('Email Address or Phone Number')) ?>"
+                               value="<?= $escaper->escapeHtml($block->getUsername()) ?>"
+                               autocomplete="off" />
+                    </div>
+                </div>
+                <div class="field password required">
+                    <label for="pass" class="label"><span><?= $escaper->escapeHtml(__('Password')) ?></span></label>
+                    <div class="control">
+                        <input name="login[password]"
+                               type="password"
+                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                               class="input-text"
+                               id="pass"
+                               title="<?= $escaper->escapeHtmlAttr(__('Password')) ?>"
+                               data-validate="{required:true}">
+                    </div>
+                </div>
+                <div class="field choice" data-bind="scope: 'showPassword'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+                <?= $block->getChildHtml('form_additional_info') ?>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit"
+                                class="action login primary"
+                                name="send"
+                                id="sendButton"
+                            <?php if ($loginButtonViewModel->disabled()): ?> disabled="disabled" <?php endif; ?>>
+                            <span><?= $escaper->escapeHtml(__('Sign In')) ?></span>
+                        </button>
+                    </div>
+                    <div class="secondary">
+                        <a class="action remind" href="<?= $escaper->escapeUrl($block->getForgotPasswordUrl()) ?>">
+                            <span><?= $escaper->escapeHtml(__('Forgot Your Password?')) ?></span>
+                        </a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <?php // phpcs:ignore Magento2.Legacy.PhtmlTemplate?>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Customer/js/block-submit-on-send": {
+                    "formId": "loginForm"
+                },
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "showPassword": {
+                            "component": "Magento_Customer/js/show-password",
+                            "passwordSelector": "#pass"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>
