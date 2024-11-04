@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * GS PhoneLogin
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_PhoneLogin
+ */
+-->
+<page layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_form_login">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">GS_PhoneLogin::form/login.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

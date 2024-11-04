@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * GS Newsletter
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_Newsletter
+ */
+
+use GS\Newsletter\Block\Popup;
+use Magento\Framework\Escaper;
+
+/** @var Popup $block */
+/** @var Escaper $escaper */
+
+$currentPage = '';
+
+if ($block->getRequest()->getFullActionName() == 'cms_index_index') {
+    $currentPage = 'home';
+} elseif ($block->getRequest()->getFullActionName() == 'catalog_product_view') {
+    $currentPage = 'product';
+} elseif ($block->getRequest()->getFullActionName() == 'checkout_cart_index') {
+    $currentPage = 'cart';
+}
+
+if ($block->shouldShowPopup($currentPage)): ?>
+    <div id="newsletter-popup" style="display:none;">
+        <div class="popup-content">
+            <h2><?= $escaper->escapeHtml(__('Subscribe to our Newsletter')); ?></h2>
+            <p><?= $escaper->escapeHtml(__('Enter your email to get 10% off your next purchase!')); ?></p>
+            <form id="newsletter-form">
+                <input type="email" id="newsletter-email" placeholder="<?= $escaper->escapeHtml(__('Enter your email')); ?>" required />
+                <button type="submit"><?= $escaper->escapeHtml(__('Subscribe')); ?></button>
+            </form>
+            <div id="newsletter-response" style="display:none;"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require([
+            "jquery",
+            "Magento_Ui/js/modal/modal"
+        ], function($, modal) {
+            if (localStorage.getItem('newsletter_popup_shown') !== 'true') {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    autoOpen: true,
+                    title: '<?= $escaper->escapeHtml(__('Newsletter Subscription')); ?>',
+                    buttons: [{
+                        text: '<?= $escaper->escapeHtml(__('Close')); ?>',
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                            localStorage.setItem('newsletter_popup_shown', 'true');
+                        }
+                    }]
+                };
+                var popup = modal(options, $('#newsletter-popup'));
+
+                $('#newsletter-popup').modal('openModal');
+
+                $('#newsletter-form').on('submit', function(e) {
+                    e.preventDefault();
+
+                    var email = $('#newsletter-email').val();
+                    var responseDiv = $('#newsletter-response');
+
+                    $.ajax({
+                        url: 'newsletter/newsletter/subscribe',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: { email: email },
+                        beforeSend: function() {
+                            responseDiv.hide();
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                responseDiv.html('<p style="color:green;"><?= $escaper->escapeHtml(__('') . ' + response.message + '); ?></p>').fadeIn();
+                                localStorage.setItem('newsletter_popup_shown', 'true');
+                            } else {
+                                responseDiv.html('<p style="color:red;"><?= $escaper->escapeHtml(__('') . ' + response.message + '); ?></p>').fadeIn();
+                            }
+                        },
+                        error: function() {
+                            responseDiv.html('<p style="color:red;"><?= $escaper->escapeHtml(__('An error occurred while subscribing. Please try again later.')); ?></p>').fadeIn();
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * GS PhoneLogin
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_PhoneLogin
+ */
+
+use Magento\Framework\Escaper;
+
+/** @var Escaper $escaper */
+?>
+<div class="field phone_number required">
+    <label class="label" for="phone_number">
+        <span><?= $escaper->escapeHtml(__('Phone number')) ?></span>
+    </label>
+    <div class="control">
+        <input type="text"
+               name="phone_number"
+               id="phoneNumber"
+               value=""
+               title="<?= $escaper->escapeHtmlAttr(__('Phone number')) ?>"
+               class="input-text"
+               data-validate="{required:true}">
+    </div>
+</div>
