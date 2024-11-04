@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * GS ProductContent
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-software.com
+ *
+ * @package   GS ProductContent
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.price">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="product-info-price-custom-content"
+                   template="Magento_Catalog::content.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

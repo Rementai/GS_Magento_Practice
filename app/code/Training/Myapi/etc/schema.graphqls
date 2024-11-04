@@ -1,0 +1,7 @@
+type Query {
+    customMessage: CustomMessage @resolver(class: "Training\\Myapi\\Model\\Resolver\\CustomMessage") @doc(description: "Retrieve custom message.")
+}
+
+type CustomMessage {
+    message: String @doc(description: "Custom message.")
+}

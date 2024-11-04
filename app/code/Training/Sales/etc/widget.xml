@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget_definition.xsd">
+    <widget id="custom_helloworld_widget" class="Training\Sales\Block\Widget" is_enabled="true">
+        <label translate="true">Hello World Widget</label>
+        <description translate="true">Displays a hello world message</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" translate="true" sort_order="10">
+                <label translate="true">Title</label>
+                <default>Default Title</default>
+            </parameter>
+            <parameter name="message" xsi:type="textarea" translate="true" sort_order="20">
+                <label translate="true">Message</label>
+                <default>Hello World!</default>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

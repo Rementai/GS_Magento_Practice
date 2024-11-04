@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * GS GuestBook
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_GuestBook
+ */
+
+use GS\GuestBook\Block\Form;
+use Magento\Framework\Escaper;
+
+/** @var Form $block */
+/** @var Escaper $escaper */
+?>
+<style>
+    #guestbookForm {
+        background-color: <?= $escaper->escapeHtml($block->getFormBackgroundColor()) ?>;
+    }
+
+    #guestbookForm button {
+        background-color: <?= $escaper->escapeHtml($block->getButtonColor()) ?>;
+    }
+
+    #guestbookForm button:hover {
+        background-color: <?= $escaper->escapeHtml($block->getButtonColor()) ?>;
+    }
+</style>
+<h1 class="guestbook-title"><?= $escaper->escapeHtml($block->getHeaderText()) ?></h1>
+<form id="guestbookForm"
+      class="guestbook-form"
+      action="<?= $escaper->escapeHtml($block->getFormAction()); ?>"
+      method="post">
+    <?= $block->getBlockHtml('formkey'); ?>
+    <div class="form-group">
+        <label for="firstNameInput">
+            <span><?= $escaper->escapeHtml($block->getFirstNameLabel()) ?></span>
+        </label>
+        <input type="text"
+               id="firstNameInput"
+               name="<?= Form::FIELD_FIRST_NAME ?>"
+               placeholder="<?= $escaper->escapeHtml($block->getFirstNameLabel()) ?>"
+               required
+               maxlength="<?=Form::MAX_LENGTH_NAME ?>" />
+    </div>
+    <div class="form-group">
+        <label for="lastNameInput">
+            <?= $escaper->escapeHtml($block->getLastNameLabel()) ?>
+        </label>
+        <input type="text"
+               id="lastNameInput"
+               name="<?= Form::FIELD_LAST_NAME ?>"
+               placeholder="<?= $escaper->escapeHtml($block->getLastNameLabel()) ?>"
+               required
+               maxlength="<?=Form::MAX_LENGTH_NAME ?>" />
+    </div>
+    <div class="form-group">
+        <label for="emailInput">
+            <?= $escaper->escapeHtml($block->getEmailLabel()) ?>
+        </label>
+        <input type="email"
+               id="emailInput"
+               name="<?= Form::FIELD_EMAIL ?>"
+               placeholder="<?= $escaper->escapeHtml($block->getEmailLabel()) ?>"
+               required
+               maxlength="<?= Form::MAX_LENGTH_EMAIL ?>" />
+    </div>
+    <div class="form-group">
+        <label for="consentCheckbox">
+            <input type="checkbox" name="<?= Form::FIELD_CONSENT ?>" id="consentCheckbox" />
+            <?= $escaper->escapeHtml($block->getConsentLabel()) ?>
+        </label>
+    </div>
+    <div class="button-container">
+        <button type="submit"><?= $escaper->escapeHtml(__('Submit')) ?></button>
+        <button type="reset"><?= $escaper->escapeHtml(__('Reset')) ?></button>
+    </div>
+</form>

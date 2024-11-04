@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * GS OrderAttribute
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_OrderAttribute
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Model\Order" type="GS\OrderAttribute\Model\Order" />
+    <type name="Magento\Sales\Model\ResourceModel\Order\Grid\Collection">
+        <plugin name="GS_OrderAttribute_AddAttributeToGrid" type="GS\OrderAttribute\Plugin\SalesOrderGrid" />
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\View">
+        <plugin name="GS_OrderAttribute_AddSkuListToOrderView" type="GS\OrderAttribute\Plugin\OrderView" />
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="GS_OrderAttribute_AddProductSkusToOrder" type="GS\OrderAttribute\Plugin\AddProductSkusToOrder" />
+    </type>
+</config>

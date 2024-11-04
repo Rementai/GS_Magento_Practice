@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * GS GuestBook
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_GuestBook
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/system_file.xsd">
+    <system>
+        <section id="design" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Guestbook Design Settings</label>
+            <tab>general</tab>
+            <resource>Magento_Backend::admin</resource>
+            <group id="guestbook_design" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Guestbook Design</label>
+                <field id="header_text" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header Text</label>
+                    <comment>Enter the text for the header</comment>
+                </field>
+                <field id="button_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Color</label>
+                    <comment>Pick a color from the color picker</comment>
+                    <frontend_model>GS\GuestBook\Block\Colorpicker</frontend_model>
+                </field>
+                <field id="form_background_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Form Background Color</label>
+                    <comment>Pick a color from the color picker</comment>
+                    <frontend_model>GS\GuestBook\Block\Colorpicker</frontend_model>
+                </field>
+                <field id="first_name_label" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>First Name Label</label>
+                    <comment>Enter the label text for the first name input</comment>
+                </field>
+                <field id="last_name_label" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Last Name Label</label>
+                    <comment>Enter the label text for the last name input</comment>
+                </field>
+                <field id="email_label" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Label</label>
+                    <comment>Enter the label text for the email input</comment>
+                </field>
+                <field id="consent_label" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Consent Label</label>
+                    <comment>Enter the consent text for the checkbox</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

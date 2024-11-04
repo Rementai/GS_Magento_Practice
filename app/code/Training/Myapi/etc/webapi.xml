@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi/etc/webapi.xsd">
+    <route url="/V1/custom/select" method="GET">
+        <service class="Training\Myapi\Api\CustomRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/custom/put" method="PUT">
+        <service class="Training\Myapi\Api\CustomRepositoryInterface" method="updateItem"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/custom/insert" method="POST">
+        <service class="Training\Myapi\Api\CustomRepositoryInterface" method="createItem"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/custom/delete/:itemId" method="DELETE">
+        <service class="Training\Myapi\Api\CustomRepositoryInterface" method="deleteItem"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/custom/select/:itemId" method="GET">
+        <service class="Training\Myapi\Api\CustomRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

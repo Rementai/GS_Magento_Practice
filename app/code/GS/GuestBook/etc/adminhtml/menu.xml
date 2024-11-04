@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * GS GuestBook
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_GuestBook
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/menu.xsd">
+    <menu>
+        <add id="GS_GuestBook::guestbook"
+             title="Guestbook"
+             module="GS_GuestBook"
+             sortOrder="10"
+             resource="GS_GuestBook::guestbook"
+        />
+        <add id="GS_GuestBook::guestbook_entries"
+             title="Guestbook Entries"
+             module="GS_GuestBook"
+             sortOrder="20"
+             parent="GS_GuestBook::guestbook"
+             action="guestbook/entry/index"
+             resource="GS_GuestBook::guestbook_entries"
+        />
+    </menu>
+</config>

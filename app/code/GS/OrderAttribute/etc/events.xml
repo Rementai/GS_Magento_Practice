@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * GS OrderAttribute
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_OrderAttribute
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_after">
+        <observer name="gs_attribute_order_save" instance="GS\OrderAttribute\Observer\OrderSaveObserver"/>
+    </event>
+    <event name="sales_order_save_after">
+        <observer name="gs_attribute_order_save" instance="GS\OrderAttribute\Observer\OrderSaveObserver"/>
+    </event>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * GS ConfigurableProductReport
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_ConfigurableProductReport
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/cron.xsd">
+    <group id="default">
+        <job name="gs_configurable_product_report" instance="GS\ConfigurableProductReport\Cron\GenerateReport" method="execute">
+            <schedule>0 3 * * *</schedule>
+        </job>
+    </group>
+</config>

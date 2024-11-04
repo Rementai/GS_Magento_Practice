@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * GS OrderAttribute
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_OrderAttribute
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+
+?>
+<div class="order-sku-list">
+    <h3><?= $escaper->escapeHtml(__('Ordered products:')) ?></h3>
+    <p><?= $escaper->escapeHtml($block->getSkuList()) ?></p>
+</div>
+
+
+

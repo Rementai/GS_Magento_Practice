@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Training_Sales::training" title="Training" module="Training_Sales" resource="Training_Sales::training" sortOrder="900" action="training/training/index"/>
+    </menu>
+</config>

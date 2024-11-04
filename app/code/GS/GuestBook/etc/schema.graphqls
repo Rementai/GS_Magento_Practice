@@ -1,0 +1,26 @@
+type Query {
+    GuestBookEntries: GuestBookEntrySearchResult @resolver(class: "GS\\GuestBook\\Model\\Resolver\\GuestBookEntries")
+    GuestBookEntry(id: Int!): GuestBookEntry @resolver(class: "GS\\GuestBook\\Model\\Resolver\\GuestBookEntry")
+}
+
+type Mutation {
+    addGuestBookEntry(
+        first_name: String!,
+        last_name: String!,
+        email: String!,
+        ip_address: String!
+    ): GuestBookEntry @resolver(class: "GS\\GuestBook\\Model\\Resolver\\AddGuestBookEntry")
+}
+
+type GuestBookEntrySearchResult {
+    totalCount: Int
+    items: [GuestBookEntry]
+}
+
+type GuestBookEntry {
+    id: Int
+    first_name: String
+    last_name: String
+    email: String
+    ip_address: String
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * GS GuestBook
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_GuestBook
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="GS\GuestBook\Api\EntryRepositoryInterface" type="GS\GuestBook\Model\EntryRepository"/>
+    <preference for="GS\GuestBook\Api\Data\EntryInterface" type="GS\GuestBook\Model\Entry"/>
+    <preference for="GS\GuestBook\Api\Data\EntrySearchResultInterface" type="GS\GuestBook\Model\EntrySearchResult"/>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="guestbook_entry_listing_data_source" xsi:type="string">GS\GuestBook\Model\ResourceModel\Entry\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="GS\GuestBook\Api\Data\EntrySearchResultInterfaceFactory">
+        <arguments>
+            <argument name="factory" xsi:type="object">GS\GuestBook\Model\EntrySearchResultFactory</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\GraphQl\Schema\Type\ResolveInfo">
+        <arguments>
+            <argument name="resolvers" xsi:type="array">
+                <item name="GS_GuestBook_Model_Resolver_GuestBookEntries" xsi:type="object">GS\GuestBook\Model\Resolver\GuestBookEntries</item>
+                <item name="GS_GuestBook_Model_Resolver_GuestBookEntry" xsi:type="object">GS\GuestBook\Model\Resolver\GuestBookEntry</item>
+                <item name="GS_GuestBook_Model_Resolver_AddGuestBookEntry" xsi:type="object">GS\GuestBook\Model\Resolver\AddGuestBookEntry</item>
+            </argument>
+        </arguments>
+    </type>
+
+
+</config>

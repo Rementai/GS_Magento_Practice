@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * GS GuestBook
+ *
+ * @copyright Copyright (c) 2024 Gate-Software Sp. z o.o. (www.gate-software.com). All rights reserved.
+ * @author    Gate-Software Practice Team
+ * @author    sebastian.mazgaj@gate-commerce.com
+ *
+ * @package   GS_GuestBook
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/UI_Component/etc/ui_configuration.xsd">
+    <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/UI_Component/etc/ui_configuration.xsd">
+        <fieldset name="general">
+            <field name="header_text" formElement="input">
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Header Text</label>
+                    <dataScope>header_text</dataScope>
+                </settings>
+            </field>
+            <field name="button_color" formElement="input">
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Button Color</label>
+                    <dataScope>button_color</dataScope>
+                </settings>
+            </field>
+        </fieldset>
+    </form>
+</config>

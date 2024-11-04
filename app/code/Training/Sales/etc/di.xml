@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xml">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="training:sales:helloworld" xsi:type="object">Training\Sales\Console\Command\HelloWorld</item>
+                <item name="t:s:h" xsi:type="object">Training\Sales\Console\Command\HelloWorld</item>
+                <item name="training:sales:logtest" xsi:type="object">Training\Sales\Console\Command\LogTest</item>
+                <item name="training:sales:crud" xsi:type="object">Training\Sales\Console\Command\CrudCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Training\Sales\Logger\Logger">
+        <arguments>
+            <argument name="logger" xsi:type="object">Magento\Framework\Logger\Monolog</argument>
+        </arguments>
+    </type>
+    <!--
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="beforeAddToCart" type="Training\Sales\Plugin\Cart" sortOrder="1"/>
+        <plugin name="aroundAddToCart" type="Training\Sales\Plugin\Cart" sortOrder="2"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="afterProductName" type="Training\Sales\Plugin\Product" sortOrder="1"/>
+    </type>
+    -->
+</config>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<language xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/language.xsd">
+    <code>pl_PL</code>
+    <vendor>custom</vendor>
+    <package>pl_pl</package>
+</language>
